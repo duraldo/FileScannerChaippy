@@ -1,9 +1,8 @@
-import ctypes   # This will let us get around the Recycle Bin permissions error. 
+import ctypes   
 import sys
 import os
 
-# defining the get_size function. os.scan iterates over the directors (ithink).
-# Each entry will be an os.DirEntry object
+
 # C:\Users\muska\source\repos\FileScannerChaippy\FileScannerChaippy01.py  (refference)
 
 def is_admin():
@@ -45,22 +44,29 @@ def get_largest_files(path="D:\\", top_n=10):
     return files[:top_n]
 
 
-# I haven't used __main__ before, but I see others use the __name__ == "__main__""
-# We can only use one __main__ because that's good code form, using two got around the UAC.
-# The suggestion:  By using this idiom, you can have code that can be both used by other scripts when imported as a module and can be run standalone, we can use this for pipeline later?
+#We are adding a simply input/output.
 if __name__ == "__main__":
     if not is_admin():
-        # The script is not currently running with admin rights
-        # elevate permissions
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
 
-    # The scrip returns the 10 largest and filtiest files on the drive right now    
+    # The scrip returns the 10 largest and filtiest files on the drive right now 
+    # Now adding user input/output to the ___main___ function  
     else:
-        path_to_check = "D:\\"  # Entire Drive Scan
-        print(f"Total size of '{path_to_check}': {get_size(path_to_check) / (1024*1024):.2f} MB")
-        print("Top 10 largest files:")
-        for file, size in get_largest_files(path_to_check):
-            print(f"{file}: {size / (1024*1024):.2f} MB")
+        user_input = input("Hey! Welcome to Chaippy File Scanner, would you like to scan for the top 10 biggest files? Yes? No?")
+        if user_input.lower() == "yes" or user_input.lower() == "y":   #Input yes to start scan
+            path_to_check = "D:\\"  # Entire Drive Scan
+            print(f"Total size of '{path_to_check}': {get_size(path_to_check) / (1024*1024):.2f} MB")
+            print("Top 10 largest files:")
+            for file, size in get_largest_files(path_to_check):
+                print(f"{file}: {size / (1024*1024):.2f} MB")
+        elif user_input.lower() == "no" or user_input.lower() == "n":   
+        # elif user_input.lower() == "no" or user_input.lower() == "n": can also be used.
+
+            print("Okay, fine, be that way, bye! :P")
+        else:
+            print("Invalid Input. please enter correct input")
+
+#Added the input/output.
 
 # Future notes: Look for other exceptions that might arise.
 # plan to add an input/output to seearch for smaller files, specific files, etc.

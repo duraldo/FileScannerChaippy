@@ -11,3 +11,5 @@
   Feel free to add comments, suggestions. I would say this .py file is 85% me from scratch and 15% chatGPT filling in certain things I didn't understand.
   Being upfront, though I could have done it from scratch, my logic in it was sound, but chatgpt just helps my code look cleaner (and also not take another 20 hours to figureout 
   one key or dot notation.
+
+This code is in it's infancy! So it probably will have lots of bugs at the moment. No chat/ai capability yet.

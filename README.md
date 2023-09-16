@@ -13,3 +13,5 @@
   one key or dot notation.
 
 This code is in it's infancy! So it probably will have lots of bugs at the moment. No chat/ai capability yet.
+
+Adding another line at the end (for test/example purposes.)

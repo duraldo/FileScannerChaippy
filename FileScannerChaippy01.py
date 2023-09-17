@@ -44,13 +44,13 @@ def get_largest_files(path="D:\\", top_n=10):
     return files[:top_n]
 
 
-#We are adding a simply input/output.
+#Main block
 if __name__ == "__main__":
     if not is_admin():
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
 
     # The scrip returns the 10 largest and filtiest files on the drive right now 
-    # Now adding user input/output to the ___main___ function  
+      
     else:
         user_input = input("Hey! Welcome to Chaippy File Scanner, would you like to scan for the top 10 biggest files? Yes? No?")
         if user_input.lower() == "yes" or user_input.lower() == "y":   #Input yes to start scan
@@ -65,6 +65,10 @@ if __name__ == "__main__":
             print("Okay, fine, be that way, bye! :P")
         else:
             print("Invalid Input. please enter correct input")
+            
+        input("Press Enter to continue...")   #add a pause, for the script, at end of main block.
+
+
 
 #Added the input/output.
 
@@ -72,5 +76,3 @@ if __name__ == "__main__":
 # plan to add an input/output to seearch for smaller files, specific files, etc.
 # Eventually with options to suggest to remove files, etc. 
 # Maybe incorporate rasa open source to act as a chatbot?
-
-#Adding a testing line for rebasing, github, etc.

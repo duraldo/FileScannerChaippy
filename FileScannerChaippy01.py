@@ -2,8 +2,9 @@ import ctypes
 import sys
 import os
 
+blacklist = set(["pagefile.sys", "hiberfil.sys", "swapfile.sys"])
 
-# C:\Users\muska\source\repos\FileScannerChaippy\FileScannerChaippy01.py  (refference)
+# \repos\FileScannerChaippy\FileScannerChaippy01.py  (refference)
 
 def is_admin():
     """Check if the script is running with administrative privileges."""   #Be sure to run terminal in administrator mode for this to work.
@@ -26,9 +27,6 @@ def get_size(path="D:\\"):
         print(f"Permission defined for {path}. Skipping...")
     return total
 
-
-# this function gets the 10 largest files.
-
 def get_largest_files(path="D:\\", top_n=10):
     files = []
     try:
@@ -43,34 +41,60 @@ def get_largest_files(path="D:\\", top_n=10):
         print(f"Permission denied for {path}. Skipping...")
     return files[:top_n]
 
-
-#We are adding a simply input/output.
+#Changed to using list, as it will make adding to the code and maintaining it easier, later.
 if __name__ == "__main__":
     if not is_admin():
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
      
     else:
         user_input = input("Hey! Welcome to Chaippy File Scanner, would you like to scan for the top 10 biggest files? Yes? No?")
+<<<<<<< HEAD
         if user_input.lower() == "yes" or user_input.lower() == "y":   
+=======
+        if user_input.lower() in ["yes", "y"]:   
+>>>>>>> origin/master
             #Continues to ask for input. using while loop
 
             #Top 10 files in the drive.
             while True:
+<<<<<<< HEAD
                 file_type = input("I'm not a mind reader, would you like to scan the whole drive or a specfic folder?")
             
                 if file_type.lower() == "drive":
+=======
+                file_type = input("I'm not a mind reader, would you like to scan the whole drive or a specfic file or folder?")
+            
+                if file_type.lower() in ["drive", "d"]:
+>>>>>>> origin/master
                     path_to_check = "D:\\"  # Entire Drive Scan
                     print(f"Total size of '{path_to_check}': {get_size(path_to_check) / (1024*1024):.2f} MB")
                     print("Top 10 largest files:")
                     for file, size in get_largest_files(path_to_check):
                         print(f"{file}: {size / (1024*1024):.2f} MB")
+<<<<<<< HEAD
                 # if filetype is asked for, it doesn't work yet, placeholder.
                 elif file_type.lower() == "filetype" or file_type.lower() == "file":
                     print ("Too bad, that feature doesn't work yet.")
 
 
         elif user_input.lower() == "no" or user_input.lower() == "n":   
+=======
+                    """Here, the user will be asked if there are any files from the list they want to remove"""
+                    ### Placeholder code for next time, we need to blacklist system files!! ###
+                    
+                    break
+                
+                elif file_type.lower() in ["folder", "f", "file","filetype"]:
+                    print ("Too bad, that feature doesn't work yet. I'm busy playing Starfield, I'll get to it eventually.")
+                    break
+
+                #break lets the scrip exit, so it doesn't keep asking.
+
+
+        elif user_input.lower() in ['no', 'n']: 
+>>>>>>> origin/master
         # elif user_input.lower() == "no" or user_input.lower() == "n": can also be used.
+        # Lists are better for this.
 
             print("Okay, fine, be that way, bye! :P")
         else:

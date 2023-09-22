@@ -48,37 +48,19 @@ if __name__ == "__main__":
      
     else:
         user_input = input("Hey! Welcome to Chaippy File Scanner, would you like to scan for the top 10 biggest files? Yes? No?")
-<<<<<<< HEAD
-        if user_input.lower() == "yes" or user_input.lower() == "y":   
-=======
         if user_input.lower() in ["yes", "y"]:   
->>>>>>> origin/master
             #Continues to ask for input. using while loop
 
             #Top 10 files in the drive.
             while True:
-<<<<<<< HEAD
-                file_type = input("I'm not a mind reader, would you like to scan the whole drive or a specfic folder?")
-            
-                if file_type.lower() == "drive":
-=======
                 file_type = input("I'm not a mind reader, would you like to scan the whole drive or a specfic file or folder?")
             
                 if file_type.lower() in ["drive", "d"]:
->>>>>>> origin/master
                     path_to_check = "D:\\"  # Entire Drive Scan
                     print(f"Total size of '{path_to_check}': {get_size(path_to_check) / (1024*1024):.2f} MB")
                     print("Top 10 largest files:")
                     for file, size in get_largest_files(path_to_check):
                         print(f"{file}: {size / (1024*1024):.2f} MB")
-<<<<<<< HEAD
-                # if filetype is asked for, it doesn't work yet, placeholder.
-                elif file_type.lower() == "filetype" or file_type.lower() == "file":
-                    print ("Too bad, that feature doesn't work yet.")
-
-
-        elif user_input.lower() == "no" or user_input.lower() == "n":   
-=======
                     """Here, the user will be asked if there are any files from the list they want to remove"""
                     ### Placeholder code for next time, we need to blacklist system files!! ###
                     
@@ -92,7 +74,6 @@ if __name__ == "__main__":
 
 
         elif user_input.lower() in ['no', 'n']: 
->>>>>>> origin/master
         # elif user_input.lower() == "no" or user_input.lower() == "n": can also be used.
         # Lists are better for this.
 
@@ -106,4 +87,3 @@ if __name__ == "__main__":
 # plan to add an input/output to seearch for smaller files, specific files, etc.
 # Eventually with options to suggest to remove files, etc. 
 # Maybe incorporate rasa open source to act as a chatbot?
-
